@@ -1,0 +1,28 @@
+---
+description: How to write Gatlor code — contracts, gates, idempotent pipelines
+globs: "{apps,packages,tests,runbooks}/**/*"
+alwaysApply: false
+---
+
+# Coding conventions
+
+Follow `docs/coding-conventions.md`. Tooling is in `docs/repo-conventions.md`.
+
+## Write it this way
+
+- Pydantic models for Release, Sbom, VexDecision, ReportDraft, TechnicalFileExport, Approval. Fail at construction if invariants are missing.
+- Pipeline steps are pure and idempotent. Evidence is append-only; never repair a hash.
+- Evidence export and report release are gates on state changes, not dashboards. No export without a hash-bound SBOM and frozen VEX decisions. No report leaves without a named human press. VEX is superseded, never deleted.
+- One package, one concern. Domain packages do not import platform SDKs.
+- Names match the blueprints (`release_hash`, `product_line_id`, `vex_decision_id`). Do not invent synonyms.
+
+```text
+# ❌ BAD
+if payload.get("hash"):
+    export.status = "sealed"  # skip the checks
+    db.commit()
+
+# ✅ GOOD
+check = ReadinessCheck.model_validate(payload)
+export = lifecycle.transition(export, to="built", checks=(check,))
+```

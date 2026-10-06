@@ -1,0 +1,58 @@
+[project]
+name = "gatlor"
+version = "0.1.0"
+description = "CRA evidence ledger and free CLI for small makers"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = ["gatlor-cli"]
+
+[dependency-groups]
+dev = [
+    "gatlor-evals",
+    "mypy>=1.13",
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["apps/*", "packages/*"]
+
+[tool.uv.sources]
+gatlor-cli = { workspace = true }
+gatlor-evals = { workspace = true }
+gatlor-evidence = { workspace = true }
+gatlor-ingest = { workspace = true }
+gatlor-vendors = { workspace = true }
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["apps", "packages", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+    "gatlor_cli",
+    "gatlor_evals",
+    "gatlor_evidence",
+    "gatlor_ingest",
+    "gatlor_vendors",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "packages/evidence"
+packages = ["gatlor_evidence"]
+
+[[tool.mypy.overrides]]
+module = ["cyclonedx.*"]
+ignore_missing_imports = true

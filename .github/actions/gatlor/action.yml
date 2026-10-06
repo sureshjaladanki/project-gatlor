@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2026 Suresh Jaladanki
+# SPDX-License-Identifier: Apache-2.0
+name: Gatlor scan
+description: Wrap Syft and OSV. Write a CycloneDX SBOM, a VEX file, and a readiness checklist.
+inputs:
+  path:
+    description: Tree for Syft to scan
+    required: false
+    default: "."
+  out-dir:
+    description: Directory for SBOM, VEX, and checklist
+    required: false
+    default: dist/gatlor
+  repo-root:
+    description: Directory that holds SECURITY.md and SUPPORT.md
+    required: false
+    default: "."
+  syft-version:
+    description: Syft release tag
+    required: false
+    default: v1.48.0
+runs:
+  using: composite
+  steps:
+    - name: Install Syft
+      shell: bash
+      env:
+        SYFT_VERSION: ${{ inputs.syft-version }}
+      run: |
+        curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh \
+          | sh -s -- -b "$HOME/.local/bin" "$SYFT_VERSION"
+        echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+      with:
+        python-version: "3.12"
+    - name: Scan
+      shell: bash
+      run: |
+        uv sync --frozen --all-groups
+        uv run gatlor scan --path "${{ inputs.path }}" --out-dir "${{ inputs.out-dir }}" --repo-root "${{ inputs.repo-root }}"
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: gatlor-scan
+        path: ${{ inputs.out-dir }}

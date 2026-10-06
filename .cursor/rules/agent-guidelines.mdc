@@ -1,0 +1,27 @@
+---
+description: Agent reply style — plain English, short answers; maximise Cursor vs billed quota
+alwaysApply: true
+---
+
+# Agent guidelines
+
+Follow `docs/agent-guidelines.md`.
+
+## All models: readable replies
+
+- Plain English over jargon. Define a required domain term once, then use it.
+- Short replies. Outcome first, then only the detail needed to act.
+- Keep the decision, files touched, and next step. Drop the diary of how you got there.
+- Do not recap the task, narrate tool calls, or write journal-style sections the user did not ask for.
+
+## Cursor vs billed quota
+
+Maximise token quota efficiency. Cursor-included models (including Grok) are the default for all work. Billed models (Claude, Gemini, others) cost quota: use them only when their judgment is worth it, and only for that slice.
+
+- Do not use a billed model as the parent. If this session already is one, do not launch more billed sub-agents; ask the user to switch the parent to a Cursor model.
+- A billed model runs only as a packed sub-agent. Do not launch one for search, grep, mechanical edits, script runs, web fetches, or work a Cursor model can finish.
+- Before launching, the Cursor parent finishes the cheap work, then packs one job, a complete fact picture, and what to return.
+- Pack means compact, not thin. Include every constraint, decision, path, and quote the sub-agent needs. Do not omit facts to save tokens. Do not send work the billed model should not do.
+- Do not forward chat history, these guidelines, whole files, or long logs. Point to paths; quote only the lines that matter.
+- Repo reads and writes, tool calls, scripts, web searches, MCP, retries, applying patches, and other third-party input stay on a Cursor-included model. The billed sub-agent returns the decision, draft, or patch as text, or a precise I/O request. The Cursor parent executes it.
+- The billed model may do that cheap work itself only when the Cursor parent cannot.

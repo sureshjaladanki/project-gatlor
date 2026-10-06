@@ -1,0 +1,29 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "type": "application",
+      "name": "fixture-app",
+      "version": "0.0.1",
+      "bom-ref": "fixture-app"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "pkg:pypi/requests@2.31.0",
+      "name": "requests",
+      "version": "2.31.0",
+      "purl": "pkg:pypi/requests@2.31.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "no-purl-lib",
+      "name": "no-purl-lib",
+      "version": "1.0.0"
+    }
+  ]
+}

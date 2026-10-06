@@ -1,0 +1,24 @@
+Gatlor
+Copyright 2026 Suresh Jaladanki
+
+This product includes software and data from other projects. Their licences
+are unchanged. See LICENSE and docs/licensing.md.
+
+Apache-2.0 software used or wrapped by the CLI includes:
+
+- cyclonedx-python-lib (CycloneDX)
+- Syft (Anchore), invoked as an external binary (Apache-2.0;
+  https://github.com/anchore/syft)
+- The OSV.dev project software (Google) is Apache-2.0. Queries go over HTTP.
+
+Advisory data is not covered by the software licence of the tool that serves
+it. Each advisory record carries its own licence; the source database
+matters. We record source and licence per record and attribute as that
+licence requires. Per-record attribution for OSV-aggregated records is not
+yet verified.
+
+When the ledger uses the NVD API, product copy will include:
+
+  This product uses the NVD API but is not endorsed or certified by the NVD.
+
+Do not attribute modified feed content to NVD.

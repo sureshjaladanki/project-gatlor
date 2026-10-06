@@ -1,0 +1,25 @@
+---
+description: Repo layout, uv/Python tooling, and stacks this product does not build
+alwaysApply: true
+---
+
+# Repo conventions
+
+Follow `docs/repo-conventions.md`.
+
+## Layout
+
+- One repo, one product: Gatlor (CRA evidence ledger).
+- Python 3.12 in `apps/` and `packages/`. Infra in `infra/`. Docs in `docs/` (kebab-case). Tests in `tests/`.
+- Pricing, cadence, and stop-rules stay unpublished. Do not put them in the public `docs/` tree.
+- Do not add `src/`, a SPA, a second runtime, Redis, or a data warehouse.
+
+## Tooling
+
+- Package manager: `uv` workspaces. Lint: `ruff`. Types: `mypy --strict` on `domain`, `ledger`, `vex`, `reporting`. Tests: `pytest`.
+- Postgres 16 is the system of record and the job queue. Object storage is S3-compatible.
+
+## Do not build
+
+- Checkout, a storefront, a marketplace, auto-file to ENISA, backdating, deleting VEX, "compliant" claims, 24/7 SOC, scanner rewrites, a GRC platform, or persona-studio code.
+- Secrets in the repo. Infra only through `infra/`.

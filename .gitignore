@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+dist/
+.env
+.coverage
+htmlcov/
+
+# Org-internal operating docs (pricing, stop-rules, cadence). Keep local.
+docs/internal/*
+!docs/internal/README.md

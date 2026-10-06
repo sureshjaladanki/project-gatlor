@@ -1,0 +1,43 @@
+Copyright 2026 Suresh Jaladanki
+
+This repository is licensed by component. If a file has an SPDX identifier,
+that identifier controls over this map and over any directory LICENSE file.
+
+Apache License 2.0 (LICENSE-APACHE)
+  OSI open source. Use, modify, and sell, including as a competing service.
+  Patent grant included.
+
+    apps/cli/
+    .github/actions/gatlor/
+    packages/ingest/
+    packages/vendors/
+    packages/evidence/     (CLI format code only: checklist, VEX document, claims lint)
+    packages/evals/        (fixtures for the Apache packages)
+    tests/                 (until a test tree is added for FSL packages)
+    README.md, SECURITY.md, SUPPORT.md, NOTICE, CONTRIBUTING.md, DCO.md
+
+Functional Source License 1.1, Apache 2.0 future license (LICENSE-FSL)
+  SPDX: FSL-1.1-ALv2. Source-available, not OSI open source.
+  Read, audit, and run internally. Do not offer a competing commercial service.
+  Each published version becomes Apache-2.0 on the second anniversary of that
+  version being made available.
+
+    Default for everything not listed above or reserved below, including:
+    apps/api/, apps/review-ui/, apps/worker/, apps/cron/
+    packages/domain/, packages/ledger/, packages/vex/, packages/reporting/
+    packages/billing/, packages/adapters/, infra/, runbooks/
+
+    packages/ledger/ is the SBOM store, hash binding, and technical-file
+    export. Do not add those to packages/evidence/ (Apache-2.0).
+    Apache packages must not import FSL packages. See docs/licensing.md.
+
+All rights reserved (not licensed by this repository)
+    docs/internal/             (gitignored operating docs)
+    Indie kit templates and docs/kit-licence.md, when sold: one maker per licence.
+    The kit's CI action stays Apache-2.0.
+
+Trademarks
+    "Gatlor" and any logo are not licensed for use as a product name.
+    See TRADEMARKS.md.
+
+Full terms: docs/licensing.md
