@@ -6,7 +6,7 @@ Layout, tooling and what is forbidden in this repo. How to write code is [coding
 
 ## Product
 
-One repo, one product: **Gatlor**, CRA engineering for small makers. That means a free CLI, build-in sprints, and the subscription evidence ledger. The persona studio is paused and lives in `project-avatar`. None of its code belongs here.
+One repo, one product: **Gatlor**, CRA engineering for small makers. That means a free CLI, build-in sprints, and the subscription evidence ledger.
 
 The evidence ledger is a modular monolith: one codebase, one Postgres database, one object store, one container image run as `api`, `worker`, and `cron`. It does not take payment, host a storefront, or run a marketplace. Kit and subscriptions go through a merchant of record (Paddle or Lemon Squeezy, one chosen on first use). Sprints, reviews, and retainers are invoiced directly.
 
@@ -114,7 +114,7 @@ New Python files carry SPDX identifiers for their directory. Put store, hash bin
 ## Forbidden in this repo
 
 - Taking payment or building checkout, headless commerce, or a custom storefront. Gumroad and Whop are not used.
-- A marketplace, social network, creator platform, consumer subscription app, or persona-studio code (`personas/`, desks, social adapters, generation pipelines).
+- A marketplace or a consumer subscription app.
 - A data warehouse or a second analytics database.
 - Any code path that files, submits, or posts to ENISA. A named human at the maker files.
 - Backdating evidence, or setting `recorded_at` from client input.
