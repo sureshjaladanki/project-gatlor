@@ -24,6 +24,10 @@ Signed-off-by: Your Name <you@example.com>
 
 Do not use the DCO as the grant for FSL files.
 
+## Branching
+
+Do not commit to `main`. Open a feature branch and land changes with a **squash merge** pull request. GitHub enforces this: direct pushes, merge commits, rebase merges, and force-pushes to `main` are blocked. A second review is not required.
+
 ## Code
 
 Follow [docs/coding-conventions.md](docs/coding-conventions.md) and [docs/repo-conventions.md](docs/repo-conventions.md). New Python files carry SPDX headers matching their directory's licence.

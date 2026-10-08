@@ -1,4 +1,4 @@
-# Gatlor: brief vision
+# Gatlor: vision
 
 Owner: Suresh Jaladanki. Design date: 5 October 2026.
 
