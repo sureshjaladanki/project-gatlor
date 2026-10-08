@@ -43,3 +43,15 @@ def test_syft_nonzero_exit() -> None:
         run.return_value.stdout = b""
         with pytest.raises(RuntimeError, match="Syft failed"):
             generate_cyclonedx(Path("."))
+
+
+def test_syft_selects_declared_catalogers() -> None:
+    with patch("gatlor_vendors.syft.subprocess.run") as run:
+        run.return_value.returncode = 0
+        run.return_value.stderr = b""
+        run.return_value.stdout = b'{"bomFormat":"CycloneDX"}'
+        generate_cyclonedx(Path("."))
+        args = run.call_args[0][0]
+        assert "--select-catalogers" in args
+        assert args[args.index("--select-catalogers") + 1] == "declared"
+        assert "--exclude" not in args

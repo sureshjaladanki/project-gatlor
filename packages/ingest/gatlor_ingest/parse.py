@@ -59,6 +59,7 @@ def _to_parsed(bom: Bom, spec_version: str) -> ParsedSbom:
             name=component.name,
             version=component.version,
             purl=str(component.purl) if component.purl else None,
+            component_type=component.type.value,
         )
         for component in bom.components
     )

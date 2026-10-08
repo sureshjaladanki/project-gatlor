@@ -11,10 +11,21 @@ class SyftNotFoundError(RuntimeError):
     """Syft is not installed or not on PATH."""
 
 
+DECLARED_CATALOGERS = "declared"
+
+
 def generate_cyclonedx(scan_path: Path, *, executable: str = "syft") -> bytes:
     try:
         proc = subprocess.run(
-            [executable, "scan", str(scan_path), "-o", "cyclonedx-json"],
+            [
+                executable,
+                "scan",
+                str(scan_path),
+                "--select-catalogers",
+                DECLARED_CATALOGERS,
+                "-o",
+                "cyclonedx-json",
+            ],
             check=False,
             capture_output=True,
         )
