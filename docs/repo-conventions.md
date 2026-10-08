@@ -135,6 +135,7 @@ New Python files carry SPDX identifiers for their directory. Put store, hash bin
 - Product and process docs: `docs/`, kebab-case (`architectural-blueprint.md`).
 - Core docs: `vision.md`, `architectural-blueprint.md`, `repo-conventions.md`, `coding-conventions.md`, `agent-guidelines.md`, `licensing.md`.
 - Operating cadence, pricing, and stop-rules are unpublished. Do not put them in the public `docs/` tree.
+- Do not commit to `main`. Land on `main` only by squash-merging a pull request from a feature branch. See [CONTRIBUTING.md](../CONTRIBUTING.md).
 - A change to a gate, entity, or state machine updates [architectural-blueprint.md](architectural-blueprint.md) in the same pull request.
 - Incident runbooks: `runbooks/`, one file per runbook. Expected files: `missed-clock.md`, `broken-audit-chain.md`, `eu-hosting.md`, `feed-outage.md`, `suppress-request.md`, `claims-language.md`, `backup-read.md`.
 - Cursor rules in `.cursor/rules/` point at these docs. Do not duplicate the full text in the rule file.

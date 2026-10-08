@@ -281,7 +281,7 @@ sequenceDiagram
   CR->>WK: daily feed sync and re-match
   WK->>PG: match carries exploited signal, open ReportingClock (signal_at)
   WK->>AL: alert approvers and operator, show elapsed time
-  MA->>PG: record aware_at (system stamps recorded_at; legal deadlines start)
+  MA->>PG: record aware_at (system stamps recorded_at. legal deadlines start)
   WK->>PG: draft early warning text (ReportDraft v1)
   ME->>PG: edit draft (new version, new body_hash)
   MA->>PG: press ReportDraft (Approval on body_hash)
