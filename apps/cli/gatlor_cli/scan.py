@@ -63,7 +63,9 @@ def run_scan(
         for hit in osv_hits
     )
     vex_bytes = write_in_triage_vex(hits, product_name=parsed.name, generated_at=now)
-    missing_purl = sum(1 for component in parsed.components if not component.purl)
+    missing_purl = sum(
+        1 for component in parsed.components if component.needs_purl() and not component.purl
+    )
     checks = run_checks(
         spec_version=parsed.spec_version,
         component_count=len(parsed.components),
