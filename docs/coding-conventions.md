@@ -96,8 +96,6 @@ Follow Python in Python files. Templates stay HTML.
 | Private helpers | leading `_` | `_idempotency_key`, `_claims_lint` |
 | Table / column names | stable `snake_case` | `release_hash`, `kept_cents`, `recorded_at` |
 
-Never use desk-system names (`open_move`, `sku`, `demand_note`, `persona`) in this repo.
-
 ### Data files (`apps/cli/`, `packages/evals/`)
 
 Checklist text, report templates, and golden fixtures are data, not code. Keep them versioned and passing the claims lint. A merge makes a fixture available; it does not change a production gate.

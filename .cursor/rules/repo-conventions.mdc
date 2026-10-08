@@ -21,5 +21,5 @@ Follow `docs/repo-conventions.md`.
 
 ## Do not build
 
-- Checkout, a storefront, a marketplace, auto-file to ENISA, backdating, deleting VEX, "compliant" claims, 24/7 SOC, scanner rewrites, a GRC platform, or persona-studio code.
+- Checkout, a storefront, a marketplace, auto-file to ENISA, backdating, deleting VEX, "compliant" claims, 24/7 SOC, scanner rewrites, or a GRC platform.
 - Secrets in the repo. Infra only through `infra/`.

@@ -15,8 +15,6 @@ Part A says what Gatlor sells and what it never does. Part B is the evidence led
 | Item | Value |
 |---|---|
 | This repo | Gatlor: CRA engineering for small makers, delivered as a build-in sprint then a subscription evidence ledger |
-| Persona studio | Paused as the primary business. Lives in `project-avatar`. No persona, desk or social code here |
-| Products in this repo | One: Gatlor |
 
 ## 2. Terms
 
@@ -44,7 +42,7 @@ Part A says what Gatlor sells and what it never does. Part B is the evidence led
 |---|---|
 | **Sell** | Free CLI and CI action. Scope review. Build-in sprint per product line. Ledger subscription. Triage retainer. Indie kit as distribution |
 | **Build** | Evidence ledger: CI upload stored by content hash, daily vulnerability match, VEX with reason codes, reporting clock with drafted texts, technical-file export, append-only audit log, EU hosting |
-| **Never** | Claim a product is compliant or certified. Give legal opinions. Act as a notified body. File to ENISA for a customer, or auto-submit. Run 24/7 cover. Analyse binary firmware in house. Build generic GRC, ISO 27001 or NIS2 crosswalks. Ship a consumer subscription app or a marketplace. Do persona work in the first 12 months. Backdate evidence. Delete a VEX decision (supersede only). Hide a vulnerability to make a dashboard green |
+| **Never** | Claim a product is compliant or certified. Give legal opinions. Act as a notified body. File to ENISA for a customer, or auto-submit. Run 24/7 cover. Analyse binary firmware in house. Build generic GRC, ISO 27001 or NIS2 crosswalks. Ship a consumer subscription app or a marketplace. Backdate evidence. Delete a VEX decision (supersede only). Hide a vulnerability to make a dashboard green |
 
 ## 4. Offers, who pays, human vs software, sequence
 
