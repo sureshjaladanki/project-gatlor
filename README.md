@@ -29,7 +29,11 @@ uv run gatlor scan --sbom path/to/sbom.cdx.json --out-dir dist/gatlor --repo-roo
 
 ## CI action
 
-This repository's workflow runs the CLI after lint and tests. Other repos can call the composite action at `.github/actions/gatlor` after checking out this tree (or, later, an installed package).
+This repository's workflow runs the CLI after lint and tests.
+
+To release, run `uv version --bump patch` (or `minor`, `major`), which updates `pyproject.toml` and `uv.lock` together, and merge to `main`. CI fails if the two disagree. After CI passes, the Release workflow creates tag `v<version>` on that commit and publishes the scan artifacts. If the tag already exists, it does nothing.
+
+Other repositories can call the composite action at `sureshjaladanki/project-gatlor/.github/actions/gatlor@<tag>` (pin a release tag, not a branch). Pass `sbom` with a CycloneDX JSON path in the caller workspace to skip Syft. Without `sbom`, the action installs Syft and scans `path`. Optional `artifact-name` sets the uploaded artifact.
 
 ## Gatlor's own product files
 
