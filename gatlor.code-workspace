@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "name": "project-gatlor",
+      "path": "."
+    },
+    {
+      "name": "gatlor-sample-gateway",
+      "path": "../gatlor-sample-gateway"
+    },
+    {
+      "name": "gatlor-confidential",
+      "path": "../gatlor-confidential"
+    }
+  ],
+  "settings": {}
+}

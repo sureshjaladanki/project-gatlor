@@ -1,32 +1,58 @@
 name: Release
 
 on:
-  push:
-    tags: ["v*"]
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: write
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: ./.github/actions/gatlor
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Read version
+        id: version
+        run: |
+          VERSION="$(python3 -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')"
+          TAG="v$VERSION"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" > /dev/null; then
+            echo "Tag $TAG exists. Bump version in pyproject.toml to release."
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.version.outputs.exists == 'false'
+        uses: ./.github/actions/gatlor
         with:
           out-dir: dist/gatlor
       - name: Checksums
+        if: steps.version.outputs.exists == 'false'
         working-directory: dist/gatlor
         run: sha256sum sbom.cdx.json vex.cdx.json readiness-checklist.md > SHA256SUMS
-      - name: Publish release
+      - name: Tag and publish release
+        if: steps.version.outputs.exists == 'false'
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
         run: |
-          gh release create "$GITHUB_REF_NAME" \
+          gh release create "$TAG" \
             dist/gatlor/sbom.cdx.json \
             dist/gatlor/vex.cdx.json \
             dist/gatlor/readiness-checklist.md \
             dist/gatlor/SHA256SUMS \
-            --verify-tag \
-            --title "Gatlor $GITHUB_REF_NAME" \
+            --target "$SHA" \
+            --title "Gatlor $TAG" \
             --generate-notes

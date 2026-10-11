@@ -19,6 +19,14 @@ inputs:
     description: Syft release tag
     required: false
     default: v1.48.0
+  sbom:
+    description: CycloneDX JSON path. When set, skip Syft and pass --sbom to the CLI
+    required: false
+    default: ""
+  artifact-name:
+    description: Name of the uploaded artifact
+    required: false
+    default: gatlor-scan
 runs:
   using: composite
   steps:
@@ -27,9 +35,11 @@ runs:
       env:
         SYFT_VERSION: ${{ inputs.syft-version }}
       run: |
-        curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh \
-          | sh -s -- -b "$HOME/.local/bin" "$SYFT_VERSION"
-        echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+        if [ -z "${{ inputs.sbom }}" ]; then
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh \
+            | sh -s -- -b "$HOME/.local/bin" "$SYFT_VERSION"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+        fi
     - name: Install uv
       uses: astral-sh/setup-uv@v10.2.0
       with:
@@ -37,10 +47,21 @@ runs:
     - name: Scan
       shell: bash
       run: |
+        ACTION_ROOT="$(cd "${GITHUB_ACTION_PATH}/../../.." && pwd)"
+        cd "$ACTION_ROOT"
         uv sync --frozen --all-groups
-        uv run gatlor scan --path "${{ inputs.path }}" --out-dir "${{ inputs.out-dir }}" --repo-root "${{ inputs.repo-root }}"
+        WS="$GITHUB_WORKSPACE"
+        SBOM_ARGS=()
+        if [ -n "${{ inputs.sbom }}" ]; then
+          SBOM_ARGS=(--sbom "$WS/${{ inputs.sbom }}")
+        fi
+        uv run --directory "$ACTION_ROOT" gatlor scan \
+          --path "$WS/${{ inputs.path }}" \
+          --out-dir "$WS/${{ inputs.out-dir }}" \
+          --repo-root "$WS/${{ inputs.repo-root }}" \
+          "${SBOM_ARGS[@]}"
     - name: Upload artifacts
       uses: actions/upload-artifact@v7
       with:
-        name: gatlor-scan
+        name: ${{ inputs.artifact-name }}
         path: ${{ inputs.out-dir }}
