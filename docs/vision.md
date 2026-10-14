@@ -11,4 +11,4 @@ Owner: Suresh Jaladanki. Design date: 5 October 2026.
 **Detail lives in:**
 
 - [architectural-blueprint.md](architectural-blueprint.md): the product contract and the system engineers build.
-- [licensing.md](licensing.md): Apache CLI, FSL ledger, kit licence, trademarks.
+- [LICENSE](../LICENSE): Apache CLI, FSL ledger, trademarks.

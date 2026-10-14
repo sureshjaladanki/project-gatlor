@@ -107,7 +107,7 @@ Paths, languages, package managers, linters, and forbidden stacks: [repo-convent
 Match the surrounding code before introducing a new style.
 
 - Python lives in `apps/` and `packages/`. Tests live in `tests/`.
-- New Python files start with SPDX copyright and licence identifiers that match [licensing.md](licensing.md).
+- New Python files start with SPDX copyright and licence identifiers that match [LICENSE](../LICENSE).
 - Prefer libraries already named in repo conventions (FastAPI, Pydantic, pytest, ruff, mypy). Do not add a second schema stack.
 - When editing a file, mirror its naming, import style, and structure rather than reformatting unrelated code.
 - New docs under `docs/` use kebab-case filenames.

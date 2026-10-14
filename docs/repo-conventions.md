@@ -100,7 +100,7 @@ Secrets live in the cloud secret manager, injected at runtime. Never commit toke
 
 ## Licensing
 
-Open-core. Map: [LICENSE](../LICENSE). Detail: [licensing.md](licensing.md).
+Open-core. Map: [LICENSE](../LICENSE).
 
 | Path | Licence |
 |---|---|
@@ -133,7 +133,7 @@ New Python files carry SPDX identifiers for their directory. Put store, hash bin
 ## Docs and runbooks
 
 - Product and process docs: `docs/`, kebab-case (`architectural-blueprint.md`).
-- Core docs: `vision.md`, `architectural-blueprint.md`, `repo-conventions.md`, `coding-conventions.md`, `agent-guidelines.md`, `licensing.md`.
+- Core docs: `vision.md`, `architectural-blueprint.md`, `repo-conventions.md`, `coding-conventions.md`, `agent-guidelines.md`.
 - Operating cadence, pricing, and stop-rules are unpublished. Do not put them in the public `docs/` tree.
 - Do not commit to `main`. Land on `main` only by squash-merging a pull request from a feature branch. See [CONTRIBUTING.md](../CONTRIBUTING.md).
 - A change to a gate, entity, or state machine updates [architectural-blueprint.md](architectural-blueprint.md) in the same pull request.

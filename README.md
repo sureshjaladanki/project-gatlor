@@ -53,4 +53,4 @@ uv run pytest
 
 Open-core. The CLI, the CI action, and the SBOM/VEX format code they need are [Apache-2.0](LICENSE-APACHE) (OSI open source). The hosted evidence ledger, when added, is [FSL-1.1-ALv2](LICENSE-FSL): source-available, not OSI open source. Each ledger version becomes Apache-2.0 two years after it is published. The name Gatlor is a [trademark](TRADEMARKS.md).
 
-See [LICENSE](LICENSE), [docs/licensing.md](docs/licensing.md), and [CONTRIBUTING.md](CONTRIBUTING.md).
+See [LICENSE](LICENSE) and [CONTRIBUTING.md](CONTRIBUTING.md).

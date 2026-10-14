@@ -4,7 +4,7 @@ Copyright: Suresh Jaladanki.
 
 ## Licences
 
-This is an open-core repository. The map is in [LICENSE](LICENSE) and [docs/licensing.md](docs/licensing.md).
+This is an open-core repository. The map is in [LICENSE](LICENSE).
 
 - Apache-2.0 paths (CLI, CI action, ingest, vendors, and today's evidence format code) are OSI open source.
 - FSL-1.1-ALv2 paths (the hosted ledger, when added) are source-available. Do not call them open source.

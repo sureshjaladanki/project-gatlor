@@ -182,7 +182,7 @@ flowchart LR
 
 `domain` imports no vendor SDK, no HTTP client, no database driver.
 
-Licences: [licensing.md](licensing.md). CLI, ingest, vendors, and evidence format code are Apache-2.0. Ledger modules (`domain`, `ledger`, `vex`, `reporting`, `billing`, `adapters`, `api`, `review-ui`, `worker`, `cron`) are FSL-1.1-ALv2, source-available, not OSI open source. Store, hash binding, and technical-file export belong in `packages/ledger/`, not in Apache `packages/evidence`.
+Licences: [LICENSE](../LICENSE). CLI, ingest, vendors, and evidence format code are Apache-2.0. Ledger modules (`domain`, `ledger`, `vex`, `reporting`, `billing`, `adapters`, `api`, `review-ui`, `worker`, `cron`) are FSL-1.1-ALv2, source-available, not OSI open source. Store, hash binding, and technical-file export belong in `packages/ledger/`, not in Apache `packages/evidence`.
 
 ```mermaid
 flowchart TB
